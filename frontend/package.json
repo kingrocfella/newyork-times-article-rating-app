@@ -24,6 +24,7 @@
     "vue-datetime": "^1.0.0-beta.6",
     "vue-directive-tooltip": "^1.4.5",
     "vue-json-to-excel": "0.0.8",
+    "vue-rate-it": "^2.1.0",
     "vue-router": "^3.0.1",
     "vue-spinkit": "^1.4.1",
     "vue-sweetalert2": "^1.5.3",

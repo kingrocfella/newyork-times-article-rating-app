@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import error404 from '../components/404';
-import newsfeed from '../components/newsfeed';
+import techfeed from '../components/techfeed';
+import europefeed from '../components/europefeed';
 
 Vue.use(Router)
 
@@ -14,11 +15,19 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'newsfeed',
+      name: 'techfeed',
       meta: {
 				forVisitors: true
 			},
-      component: newsfeed
+      component: techfeed
+    },
+    {
+      path: '/europe',
+      name: 'europefeed',
+      meta: {
+				forVisitors: true
+			},
+      component: europefeed
     }
   ],
   mode: 'history'

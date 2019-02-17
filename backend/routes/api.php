@@ -6,4 +6,10 @@ Route::group(['middleware' => 'auth:api'], function (){
 	
 });
 
-Route::get('/newsfeed/import', 'newsfeedController@getNewsFeeds');
+//Import news feed from the resources API
+Route::get('/newsfeed/import', 'newsfeedController@importNewsFeeds');
+//Get news feed from DB
+Route::get('/newsfeed/{feedType}', 'newsfeedController@getNewsFeed');
+//Save new rating for feeds
+Route::post('/ratings/save', 'ratingsController@saveRatings');
+

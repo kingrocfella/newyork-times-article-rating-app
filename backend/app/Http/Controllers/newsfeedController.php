@@ -15,7 +15,7 @@ use DB;
 class newsfeedController extends Controller
 {
     //get news feed by consuming the resources API
-    public function getNewsFeeds()
+    public function importNewsFeeds()
     {
         $client = new Client([
             'headers' => [ 'Content-Type' => 'application/json', "Accept" => "application/json"],
@@ -45,5 +45,21 @@ class newsfeedController extends Controller
         manageFeeds($arrayEurope['channel']['item'], "Europe");
         
         return "success";
+    }
+
+    public function getNewsFeed($feedType)
+    {
+        //get tech feed
+        if ($feedType === "Tech") {
+            $feed = tech_feed::select('guid','title','link','description','pubDate','tech_feeds.feed_id')
+            ->orderBy('tech_feeds.created_at', 'DESC')->get();
+        }
+        //else get europe feed
+        else if ($feedType === "Europe") {
+            $feed = europe_feed::select('guid','title','link','description','pubDate','europe_feeds.feed_id')
+            ->orderBy('europe_feeds.created_at', 'DESC')->get();
+        }
+
+        return $feed;
     }
 }
