@@ -12,4 +12,6 @@ Route::get('/newsfeed/import', 'newsfeedController@importNewsFeeds');
 Route::get('/newsfeed/{feedType}', 'newsfeedController@getNewsFeed');
 //Save new rating for feeds
 Route::post('/ratings/save', 'ratingsController@saveRatings');
+//Get the 5 best rated articles
+Route::get('/ratings/topfive', 'ratingsController@getBestRatedArticles');
 

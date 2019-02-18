@@ -36,13 +36,25 @@
           <p class="lead">{{data['description']}}</p>
           <hr class="my-4">
           <div class="row">
+            <div class="col-sm-4">
+              <b style="font-size: 10px;">Rate this article:</b> 
+            </div>
+          </div>
+          <div class="row">
             <div class="col-sm-10" @click="updateRating(data.rating, data['feed_id'])">
               <star-rating v-model="data.rating" :item-size=size :show-rating=showRating></star-rating>
             </div>
             <div class="col-sm-2"><a class="btn btn-primary btn-sm" :href="data['link']" target="_blank" role="button">Read Article</a></div>
           </div><br>
+          <div class="row">
+            <div class="col-sm-4">
+              <b style="font-size: 10px;">Category:</b> 
+            </div>
+          </div>
           <div class="row bottom_text">
-            <div class="col-sm-8"></div>
+            <div class="col-sm-8" v-for="(item,n) in data['category']" :key="n">
+              <span style="font-size: 12px;">{{item['category']}} </span>
+            </div>
             <div class="col-sm-4">
               <div class="text-muted">
                 <code>Published: {{data['pubDate']}}</code>

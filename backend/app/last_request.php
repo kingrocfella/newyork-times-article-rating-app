@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class europe_feed extends Model
+class last_request extends Model
 {
-
+    //
 }

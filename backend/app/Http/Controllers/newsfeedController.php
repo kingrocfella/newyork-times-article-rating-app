@@ -51,15 +51,47 @@ class newsfeedController extends Controller
     {
         //get tech feed
         if ($feedType === "Tech") {
-            $feed = tech_feed::select('guid','title','link','description','pubDate','tech_feeds.feed_id')
-            ->orderBy('tech_feeds.created_at', 'DESC')->get();
+            $feed_id = tech_feed::select('feed_id')->get();
+
+            for ($i=0; $i < count($feed_id); $i++) { 
+                $feed[$i] = tech_feed::select('title','link','description','pubDate','feed_id')
+                ->where('feed_id',$feed_id[$i]['feed_id'])->get();
+                $categories[$i] = tech_category::select('category')->where('feed_id', $feed_id[$i]['feed_id'])->get();
+            }
+
+            for ($i=0; $i < count($feed); $i++) { 
+                $result[$i] = array(
+                    "title" => $feed[$i][0]['title'],
+                    "link" => $feed[$i][0]['link'],
+                    "feed_id" => $feed[$i][0]['feed_id'],
+                    "pubDate" => $feed[$i][0]['pubDate'],
+                    "description" => $feed[$i][0]['description'],
+                    "category" => $categories[$i]
+                );
+            }
+            return $result;
         }
         //else get europe feed
         else if ($feedType === "Europe") {
-            $feed = europe_feed::select('guid','title','link','description','pubDate','europe_feeds.feed_id')
-            ->orderBy('europe_feeds.created_at', 'DESC')->get();
-        }
+            $feed_id = europe_feed::select('feed_id')->get();
 
-        return $feed;
+            for ($i=0; $i < count($feed_id); $i++) { 
+                $feed[$i] = europe_feed::select('guid','title','link','description','pubDate','feed_id')
+                ->where('feed_id',$feed_id[$i]['feed_id'])->get();
+                $categories[$i] = europe_category::select('category')->where('feed_id', $feed_id[$i]['feed_id'])->get();
+            }
+
+            for ($i=0; $i < count($feed); $i++) { 
+                $result[$i] = array(
+                    "title" => $feed[$i][0]['title'],
+                    "link" => $feed[$i][0]['link'],
+                    "feed_id" => $feed[$i][0]['feed_id'],
+                    "pubDate" => $feed[$i][0]['pubDate'],
+                    "description" => $feed[$i][0]['description'],
+                    "category" => $categories[$i]
+                );
+            }
+            return $result;
+        }
     }
 }
