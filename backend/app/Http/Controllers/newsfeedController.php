@@ -51,7 +51,7 @@ class newsfeedController extends Controller
     {
         //get tech feed
         if ($feedType === "Tech") {
-            $feed_id = tech_feed::select('feed_id')->get();
+            $feed_id = tech_feed::select('feed_id')->orderBy('created_at', 'DESC')->get();
 
             for ($i=0; $i < count($feed_id); $i++) { 
                 $feed[$i] = tech_feed::select('title','link','description','pubDate','feed_id')
@@ -73,7 +73,7 @@ class newsfeedController extends Controller
         }
         //else get europe feed
         else if ($feedType === "Europe") {
-            $feed_id = europe_feed::select('feed_id')->get();
+            $feed_id = europe_feed::select('feed_id')->orderBy('created_at', 'DESC')->get();
 
             for ($i=0; $i < count($feed_id); $i++) { 
                 $feed[$i] = europe_feed::select('guid','title','link','description','pubDate','feed_id')

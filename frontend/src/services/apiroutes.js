@@ -18,4 +18,10 @@ export default {
       url: baseURL+'/api/ratings/save'
     });
   },
+  importNewsFeed(){
+    return axios({
+      method: 'get',
+      url: baseURL+'/api/newsfeed/import'
+    });
+  }
 }

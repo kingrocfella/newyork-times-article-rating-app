@@ -1,5 +1,4 @@
 <template>
-  
   <feedskeleton feed_title="Technology" :feed_content="tech_Feed"/>
 </template>
 

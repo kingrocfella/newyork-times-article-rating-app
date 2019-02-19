@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import error404 from '../components/404';
 import techfeed from '../components/techfeed';
 import europefeed from '../components/europefeed';
+import techadmin from '../components/techadmin'
+import europeadmin from '../components/europeadmin'
 
 Vue.use(Router)
 
@@ -16,18 +18,22 @@ export default new Router({
     {
       path: '/',
       name: 'techfeed',
-      meta: {
-				forVisitors: true
-			},
       component: techfeed
     },
     {
       path: '/europe',
       name: 'europefeed',
-      meta: {
-				forVisitors: true
-			},
       component: europefeed
+    },
+    {
+      path: '/techadmin',
+      name: 'techadmin',
+      component: techadmin
+    },
+    {
+      path: '/europeadmin',
+      name: 'europeadmin',
+      component: europeadmin
     }
   ],
   mode: 'history'

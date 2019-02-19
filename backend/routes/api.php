@@ -2,10 +2,6 @@
 
 use Illuminate\Http\Request;
 
-Route::group(['middleware' => 'auth:api'], function (){
-	
-});
-
 //Import news feed from the resources API
 Route::get('/newsfeed/import', 'newsfeedController@importNewsFeeds');
 //Get news feed from DB

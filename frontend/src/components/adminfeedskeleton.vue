@@ -7,7 +7,7 @@
         New York Times
       </a>
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search by Article Title" aria-label="Search">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search by Article Title" aria-label="Search" v-model="searchWords">
       </form>
     </nav>
     <br><br>
@@ -20,8 +20,8 @@
           </div>
           <div class="col-sm-3">
             <h6 class="text-muted font-weight-light">Feed Filter</h6>
-            <button class="btn btn-outline-primary btn-sm" @click="navigateTo('/')">Technology</button>
-            <button class="btn btn-outline-primary btn-sm" @click="navigateTo('/europe')">Europe</button>
+            <button class="btn btn-outline-primary btn-sm" @click="navigateTo('/techadmin')">Technology</button>
+            <button class="btn btn-outline-primary btn-sm" @click="navigateTo('/europeadmin')">Europe</button>
           </div>
         </div>
         <div class="d-flex justify-content-center" v-if="loader">
@@ -79,7 +79,7 @@ export default {
     'feed_title', 'feed_content'
   ],
   mounted() {
-		document.body.style.backgroundColor = "#f4f4f4";
+    document.body.style.backgroundColor = "#f4f4f4";
   },
   components: {
     StarRating
