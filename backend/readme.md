@@ -1,4 +1,4 @@
-# Trivago case studies
+# Newyork-times-article-rating-app
 
-> Backend for Trivago case studies
+> Backend for Newyork-times-article-rating-app
 
