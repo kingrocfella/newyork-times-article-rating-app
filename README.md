@@ -1,6 +1,5 @@
 # New York Times feed display
 
-This repo contains a case study which consists of 4 tasks.
 The full project when run on Docker would achieve the following:
 - Import the two news feeds from 2 New York Times resource feed APIs (XML format) into the database.
 - Fetch the newly imported feeds from the database to display to the client on the frontend.
