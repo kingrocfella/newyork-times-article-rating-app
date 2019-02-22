@@ -1,4 +1,4 @@
-# Trivago Case Studies
+# New York Times feed display
 
 This repo contains a case study which consists of 4 tasks.
 The full project when run on Docker would achieve the following:
