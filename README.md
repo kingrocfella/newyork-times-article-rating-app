@@ -1,4 +1,4 @@
-# New York Times feed display
+# New York Times article rating app
 
 The full project when run on Docker would achieve the following:
 - Import the two news feeds from 2 New York Times resource feed APIs (XML format) into the database.
