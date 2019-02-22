@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = "http://localhost:8000"
+const baseURL = "http://0.0.0.0:9000"
 
 export default {
   getNewsFeed(feedType){

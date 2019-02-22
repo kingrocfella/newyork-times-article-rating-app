@@ -13,6 +13,8 @@ function manageFeeds($array,$channel_name)
       //check for duplicity
       //ASSUMPTION: THe guid of a newsfeed item is unique and no 2 feed items share the same guid
       $find_feed = tech_feed::where('guid', $array[$i]['guid'])->first();
+
+      //if the feed item does not exist, create a new row
       if (!$find_feed) {
         $tech_feed = new tech_feed;
         $tech_feed->guid = $array[$i]['guid'];
@@ -27,6 +29,7 @@ function manageFeeds($array,$channel_name)
         //check if it's an array
         $check_array = is_array($array[$i]['category']);
         
+        //handle if it's an array
         if ($check_array) {
           $j = count($array[$i]['category']);
           while ($j > 0){
@@ -39,6 +42,7 @@ function manageFeeds($array,$channel_name)
             $j--;
           }  
         }
+        //handle if it's a string
         else{
           $feed_categories = new tech_category;
           $feed_categories->feed_id = $tech_feed->feed_id;
@@ -69,6 +73,7 @@ function manageFeeds($array,$channel_name)
         //check if it's an array
         $check_array = is_array($array[$i]['category']);
         
+        //handle if it's an array
         if ($check_array) {
           $j = count($array[$i]['category']);
           while ($j > 0){

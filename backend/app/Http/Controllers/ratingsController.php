@@ -52,7 +52,7 @@ class ratingsController extends Controller
             //give $diff a number > 5 so the next if block can be executed for first requests
             $diff = 10;
         }
-        //if difference  is greater than 5 minutes, generate a new set
+        //if difference  is greater than 5 minutes, generate a new list
         if ($diff > 5) {
             //get the 5 highest rated articles
             $best_rated = rating::select('feed_id')->orderBy('rating', 'DESC')->take(5)->get();
@@ -68,6 +68,7 @@ class ratingsController extends Controller
                     ->where('tech_categories.feed_id',$best_rated[$i]['feed_id'])
                     ->get();
                     
+                    //check if the feed_id is for a tech article, if yes, push it into an array. If no, then it must be an europe article, so retrieve the article details from the DB
                     if (count($feed) > 0 && count($category) > 0) {
                         $feed_array[$i] = $feed;
                         $category_array[$i] = $category;

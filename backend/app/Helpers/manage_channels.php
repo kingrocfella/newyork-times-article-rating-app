@@ -14,7 +14,7 @@ function manageChannels($channel_name,$array)
     $channel->link = $array['channel']['link'];
     //if the description array is not null, save the first item on the array
     if (count($array['channel']['description']) !== 0) {
-        $channel->description = $array['channel']['description'][0];
+      $channel->description = $array['channel']['description'][0];
     }
     $channel->language = $array['channel']['language'];
     $channel->copyright = $array['channel']['copyright'];
@@ -29,7 +29,7 @@ function manageChannels($channel_name,$array)
     $find_channel->link = $array['channel']['link'];
     //if the description array is not null, save the first item on the array
     if (count($array['channel']['description']) !== 0) {
-        $find_channel->description = $array['channel']['description'][0];
+      $find_channel->description = $array['channel']['description'][0];
     }
     $find_channel->language = $array['channel']['language'];
     $find_channel->copyright = $array['channel']['copyright'];

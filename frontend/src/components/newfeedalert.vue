@@ -18,12 +18,7 @@ export default {
     reloadPage(){
       location.reload(true);
     }
-  },
-  data() {
-    return {
-      show: true
-    }
-  },
+  }
 }
 </script>
 

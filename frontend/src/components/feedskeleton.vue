@@ -113,14 +113,13 @@ export default {
       if (check < 0) {
         apiroutes.saveRatings(feed_id,rating)
         .then(response => {
-          //save feed_id in localstorage so user cannot rate the same article unless he/she reloads
           //store feed_id in localstorage so user cannot rate the same article more than once.
           this.feedArray.push(feed_id)
           localStorage.setItem("feed_id",JSON.stringify(this.feedArray))
         })
       }
       else{
-        alert('You have previously rated this article hence your new rating would not be registered!');
+        alert('You have previously rated this article, hence your new rating would not be registered!');
       }
     }
   },

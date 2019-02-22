@@ -30,17 +30,17 @@ class newsfeedController extends Controller
         $xmlTech = simplexml_load_string($responseTech);
         $jsonTech = json_encode($xmlTech);
         $arrayTech = json_decode($jsonTech,TRUE);
-        // return $arrayTech;
+
         //convert the Europe xml response to json
         $xmlEurope = simplexml_load_string($responseEurope);
         $jsonEurope = json_encode($xmlEurope);
         $arrayEurope = json_decode($jsonEurope,TRUE);
 
-        //Manage both tech and europe channel details in the manage_channels.php file
+        //Manage both tech and europe channel details in the manage_channels.php file in the folder Helpers
         manageChannels("Tech",$arrayTech);
         manageChannels("Europe",$arrayEurope);
 
-        //Manage Feeds for both Tech and Europe in the manage_feed.php file
+        //Manage Feeds for both Tech and Europe in the manage_feed.php file in the folder Helpers
         manageFeeds($arrayTech['channel']['item'], "Tech");
         manageFeeds($arrayEurope['channel']['item'], "Europe");
         
@@ -48,17 +48,20 @@ class newsfeedController extends Controller
     }
 
     public function getNewsFeed($feedType)
-    {
+    {   
         //get tech feed
         if ($feedType === "Tech") {
+            //first get the feed_ids of all the tech articles in order of latest first 
             $feed_id = tech_feed::select('feed_id')->orderBy('created_at', 'DESC')->get();
 
+            //loop through the feed_ids and retrieve the title, link, description, pubDate and categories for each article.
             for ($i=0; $i < count($feed_id); $i++) { 
                 $feed[$i] = tech_feed::select('title','link','description','pubDate','feed_id')
                 ->where('feed_id',$feed_id[$i]['feed_id'])->get();
                 $categories[$i] = tech_category::select('category')->where('feed_id', $feed_id[$i]['feed_id'])->get();
             }
 
+            //array the response in a array
             for ($i=0; $i < count($feed); $i++) { 
                 $result[$i] = array(
                     "title" => $feed[$i][0]['title'],
@@ -73,14 +76,17 @@ class newsfeedController extends Controller
         }
         //else get europe feed
         else if ($feedType === "Europe") {
+            //first get the feed_ids of all the europe articles in order of latest first
             $feed_id = europe_feed::select('feed_id')->orderBy('created_at', 'DESC')->get();
 
+            //loop through the feed_ids and retrieve the title, link, description, pubDate and categories for each article.
             for ($i=0; $i < count($feed_id); $i++) { 
                 $feed[$i] = europe_feed::select('guid','title','link','description','pubDate','feed_id')
                 ->where('feed_id',$feed_id[$i]['feed_id'])->get();
                 $categories[$i] = europe_category::select('category')->where('feed_id', $feed_id[$i]['feed_id'])->get();
             }
 
+            //array the response in a array
             for ($i=0; $i < count($feed); $i++) { 
                 $result[$i] = array(
                     "title" => $feed[$i][0]['title'],

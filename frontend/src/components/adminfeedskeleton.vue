@@ -11,7 +11,23 @@
       </form>
     </nav>
     <br><br>
-    
+    <!-- error modal -->
+    <div class="modal fade" id="error" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="defaultModalLabel" style="color: #a81a12;">Error!</h4>
+          </div>
+          <div class="modal-body">
+            Sorry, an error occured while fetching new data!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-link" data-dismiss="modal">CLOSE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <feedskeleton feed_title="Europe" :feed_content="europe_feed"/>
     <div class="card">
       <div class="card-header">
         <div class="row">
@@ -99,7 +115,7 @@ export default {
   },
   methods: {
     navigateTo(route){
-      this.$router.push({path: route})
+      this.$router.push({path: route});
     },
     updateRating(rating,feed_id){
       //get array of rated feed items
@@ -117,6 +133,10 @@ export default {
           //store feed_id in localstorage so user cannot rate the same article more than once.
           this.feedArray.push(feed_id)
           localStorage.setItem("feed_id",JSON.stringify(this.feedArray))
+        })
+        .catch(error => {
+          console.log(error.response.data);
+          $("#error").modal("show");
         })
       }
       else{
