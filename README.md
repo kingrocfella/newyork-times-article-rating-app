@@ -9,7 +9,8 @@ The full project when run on Docker would achieve the following:
 
 ### Docker
 This project is very easy to install and deploy in a Docker container.
-
+Edit the Dockerfile in the backend folder and enter your mysql database connection details.
+Then change the mysql database connection details in the .env file to whatever database connection details entered in the Docker file above.
 Open a terminal window in the backend folder and run the following commands to open up the backend:
 
 ```sh
@@ -18,6 +19,7 @@ docker-compose up -d
 docker-compose run app php artisan migrate
 ```
 This would install the necessary images for the backend and migrate the database tables necessary.
+
 
 Once done, open another terminal in the frontend folder and run the following commansd:
 ```sh
