@@ -38,6 +38,3 @@ License
 ----
 
 MIT
-
-
-**Free Software, Enjoy!!!!**
